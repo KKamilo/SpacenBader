@@ -20,6 +20,15 @@ public class Destruir : MonoBehaviour
             Destroy(gameObject);
             Destroy(efecto1,3f);
             Destroy(efecto2,3f);
+            Enemy.juego=false;
+        }
+        if (other.gameObject.tag == "bala")
+        {
+            efecto1= (GameObject) Instantiate(exploxion, other.transform.position, other.transform.rotation);
+            Destroy(other.gameObject);
+            Destroy(gameObject);
+            Destroy(efecto1,3f);
+            Enemy.boss= Enemy.boss-1;
         }
         
     }
