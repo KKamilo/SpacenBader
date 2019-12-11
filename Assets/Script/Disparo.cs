@@ -29,4 +29,14 @@ public class Disparo : MonoBehaviour
             Destroy(insBala, 3f);
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "enemy") //Para una colicion en 2d se deve comparar con el gameObject
+        {
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+            
+        }
+    }
 }

@@ -6,15 +6,21 @@ public class Destruir : MonoBehaviour
 {
     public GameObject exploxion;
     public GameObject playExploid;
+    GameObject efecto1;
+    GameObject efecto2;
+
     void OnTriggerEnter(Collider other)
     {
         
-        if (other.tag== "Player")
+        if (other.gameObject.tag == "Player")
         {
-            Instantiate(exploxion, other.transform.position, other.transform.rotation);
+            efecto1= (GameObject) Instantiate(exploxion, other.transform.position, other.transform.rotation);
+            efecto2= (GameObject) Instantiate(playExploid, transform.position, transform.rotation);
+            Destroy(other.gameObject);
+            Destroy(gameObject);
+            Destroy(efecto1,3f);
+            Destroy(efecto2,3f);
         }
-        Instantiate(playExploid, transform.position, transform.rotation);
-        Destroy(other.gameObject);
-        Destroy(gameObject);
+        
     }
 }
